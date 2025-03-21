@@ -35,7 +35,7 @@ export default function TracksPage() {
         </ToggleGroup>
       </div>
       {trackLoading && <LoadingState />}
-      <div className="grid w-full items-center gap-4 gap-y-2">
+      <div className="grid w-full items-center gap-4 gap-y-2    ">
         {trackData?.items &&
           trackData.items.map((track) => (
             <div
