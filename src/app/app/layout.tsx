@@ -7,7 +7,7 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
   return (
     <div className="relative">
       <Navbar />
-      <div className="pb-16 md:pl-2">{children}</div>
+      <div className="pb-16 md:pb-0 md:pl-2">{children}</div>
     </div>
   );
 }

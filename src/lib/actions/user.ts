@@ -61,7 +61,7 @@ export const getTopArtists = async ({ timeRange, limit }: TopAttributeType) => {
   }
 };
 
-interface SongData {
+export interface TrackData {
   album: Album;
   artists: Artist[];
   available_markets: string[];
@@ -115,31 +115,13 @@ export const getTopSongs = async ({ timeRange, limit }: TopAttributeType) => {
   );
   if (result.ok) {
     const topArtists = await result.json();
-    return topArtists as { items: SongData[] };
+    return topArtists as { items: TrackData[] };
   }
 };
 
 interface RecentTracksData {
-  track: Track;
+  track: TrackData;
   played_at: string;
-}
-
-interface Track {
-  album: Album;
-  artists: Artist[];
-  available_markets: string[];
-  disc_number: number;
-  duration_ms: number;
-  explicit: boolean;
-  external_urls: ExternalUrls;
-  href: string;
-  id: string;
-  is_local: boolean;
-  name: string;
-  popularity: number;
-  track_number: number;
-  type: string;
-  uri: string;
 }
 
 export const getRecentTracks = async (limit: number) => {

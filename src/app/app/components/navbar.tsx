@@ -44,7 +44,7 @@ const NavLink = ({ name, href, icon }: NavProps) => {
 };
 export const Navbar = () => {
   return (
-    <div className="fixed w-full h-16 md:h-dvh bottom-0 md:top-0 left-0 flex md:flex-col items-center justify-center md:w-28 bg-neutral-950">
+    <div className="fixed w-full h-16 md:h-dvh bottom-0 md:top-0 left-0 z-20 flex md:flex-col items-center justify-center md:w-28 bg-neutral-950">
       {NAV_LINKS.map((nav) => (
         <NavLink key={nav.name} {...nav} />
       ))}

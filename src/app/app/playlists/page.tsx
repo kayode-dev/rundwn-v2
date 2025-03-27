@@ -15,11 +15,11 @@ export default function PlaylistsPage() {
       <p className=" text-lg md:text-2xl text-center font-bold">Playlists</p>
 
       {isLoading && <LoadingState />}
-      <div className="grid grid-cols-2 w-full items-center md:grid-cols-4 gap-4 gap-y-10 md:gap-16">
+      <div className="grid grid-cols-2 w-full items-center md:grid-cols-4 gap-6 gap-y-10 md:gap-16">
         {data?.items &&
           data.items.map((playlist) => (
             <div key={playlist.id} className="flex flex-col items-center gap-6">
-              <div className="size-28 min-h-2 shrink-0 md:w-52 md:min-h-52  overflow-hidden">
+              <div className="w-full h-full aspect-square shrink-0 md:w-52 md:min-h-52  overflow-hidden">
                 <Image
                   src={playlist.images[0].url}
                   height={300}
@@ -28,12 +28,16 @@ export default function PlaylistsPage() {
                   className="w-full h-full object-cover"
                 />
               </div>
-              <div className="space-y-1 text-center ">
+              <div className="space-y-1 text-center">
                 <p className="text-sm md:text-lg text-neutral-400 font-semibold line-clamp-1">
                   {playlist.name}
                 </p>
-                <p>{playlist.owner.display_name}</p>
-                <p>{playlist.tracks.total} tracks</p>
+                <p className="text-xs md:text-base">
+                  {playlist.owner.display_name}
+                </p>
+                <p className="text-xs md:text-base">
+                  {playlist.tracks.total} tracks
+                </p>
               </div>
             </div>
           ))}

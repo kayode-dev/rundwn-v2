@@ -21,7 +21,7 @@ export default function MainAppPage() {
   const isLoading = detailsLoading || artistsLoading || songsLoading;
   if (isLoading) return <LoadingState />;
   return (
-    <div className="min-h-dvh w-full max-w-7xl mx-auto space-y-20 p-4 py-8">
+    <div className="min-h-dvh w-full max-w-7xl mx-auto space-y-20 p-4 ">
       {userData && (
         <div className="flex flex-col gap-4 items-center text-2xl">
           <Image
