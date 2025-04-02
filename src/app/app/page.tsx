@@ -4,6 +4,8 @@ import { useQuery } from "@tanstack/react-query";
 import Image from "next/image";
 import { LoadingState } from "./components/loading";
 import Link from "next/link";
+import { cn } from "@/lib/utils";
+import { buttonVariants } from "@/components/ui/button";
 
 export default function MainAppPage() {
   const { data: userData, isLoading: detailsLoading } = useQuery({
@@ -32,6 +34,12 @@ export default function MainAppPage() {
             height={300}
           />
           <p className="font-bold">{userData.display_name}</p>
+          <Link
+            href="app/persona"
+            className={cn(buttonVariants({ variant: "outline" }))}
+          >
+            GET YOUR PERSONA
+          </Link>
         </div>
       )}
       <div className="space-y-20 md:flex md:justify-between md:gap-20">
@@ -41,10 +49,7 @@ export default function MainAppPage() {
               <p className="font-bold md:text-lg">
                 Top artistes in the last month
               </p>
-              <Link
-                href="#"
-                className="py-2 px-4 rounded-full border-2 text-xs"
-              >
+              <Link href="app/artists" className={cn(buttonVariants())}>
                 SEE MORE
               </Link>
             </div>
@@ -72,10 +77,7 @@ export default function MainAppPage() {
               <p className="font-bold md:text-lg">
                 Top songs in the last month
               </p>
-              <Link
-                href="#"
-                className="py-2 px-4 rounded-full border-2 text-xs"
-              >
+              <Link href="app/tracks" className={cn(buttonVariants())}>
                 SEE MORE
               </Link>
             </div>

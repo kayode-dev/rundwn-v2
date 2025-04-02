@@ -1,11 +1,14 @@
 "use client";
+
 import { useGetAccessToken } from "@/lib/hooks/useCheckAuth";
-import { useSearchParams } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 
 export default function CallbackPage() {
   const params = useSearchParams();
+  const router = useRouter();
   const code = params.get("code") || "";
-  useGetAccessToken(code);
+  const { isSuccess } = useGetAccessToken(code);
+  if (isSuccess) router.replace("app");
 
   return <p>Authenticating....</p>;
 }

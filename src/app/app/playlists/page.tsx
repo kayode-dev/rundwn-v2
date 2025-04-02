@@ -26,6 +26,8 @@ export default function PlaylistsPage() {
                   width={300}
                   alt="artiste image"
                   className="w-full h-full object-cover"
+                  placeholder="blur"
+                  blurDataURL={playlist.images[0].url}
                 />
               </div>
               <div className="space-y-1 text-center">

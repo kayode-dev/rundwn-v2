@@ -5,7 +5,6 @@ import {
   redirectToAuthCodeFlow,
 } from "../actions/auth";
 import { storage } from "./storage";
-import { useRouter } from "next/navigation";
 
 export const useCheckAuth = () => {
   const { mutate } = useMutation({
@@ -21,10 +20,9 @@ export const useCheckAuth = () => {
 };
 
 export const useGetAccessToken = (code: string) => {
-  const router = useRouter();
-  const { isSuccess } = useQuery({
+  const { isSuccess, isError } = useQuery({
     queryKey: ["GET_ACCESS_TOKEN"],
     queryFn: () => getAccessToken(code),
   });
-  if (isSuccess) router.replace("/app");
+  return { isError, isSuccess };
 };

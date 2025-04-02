@@ -18,7 +18,7 @@ export async function redirectToAuthCodeFlow() {
   );
   params.append(
     "scope",
-    "user-read-private user-follow-read user-top-read user-read-recently-played playlist-read-private playlist-read-collaborative"
+    "user-read-private user-read-email user-read-recently-played user-top-read user-follow-read user-follow-modify playlist-read-private playlist-read-collaborative playlist-modify-public"
   );
   params.append("code_challenge_method", "S256");
   params.append("code_challenge", challenge);
@@ -61,11 +61,10 @@ export async function getAccessToken(code: string) {
     method: "POST",
     headers: {
       "Content-Type": "application/x-www-form-urlencoded",
-      Authorization:
-        "Basic " +
-        Buffer.from(clientId + ":" + clientSecret).toString("base64"),
+      Authorization: `Basic ${Buffer.from(
+        `${clientId}:${clientSecret}`
+      ).toString("base64")}`,
     },
-
     body: params,
   });
   if (result.ok) {
@@ -75,6 +74,7 @@ export async function getAccessToken(code: string) {
     storage.setItem("refreshToken", refresh_token);
     storage.setItem("expiresIn", dateToExpire.toString());
   }
+  return await result.json();
 }
 
 export const checkTokenValidity = async () => {

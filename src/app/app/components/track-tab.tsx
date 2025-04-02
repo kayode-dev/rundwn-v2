@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { convertMilliSecondsToMinutes } from "@/lib/utils";
 import { TrackData } from "@/lib/actions/user";
+
 export const TrackTab = ({
   id,
   album,
@@ -22,6 +23,8 @@ export const TrackTab = ({
           width={300}
           alt="track image"
           className="w-full h-full object-cover"
+          placeholder="blur"
+          blurDataURL={album.images[0].url}
         />
       </div>
       <div className="flex flex-1 min-w-0">

@@ -47,6 +47,8 @@ export default function ArtistsPage() {
                   width={300}
                   alt="artiste image"
                   className="w-full h-full object-cover"
+                  placeholder="blur"
+                  blurDataURL={artist.images[0].url}
                 />
               </div>
               <p className="text-sm md:text-lg text-neutral-400 font-semibold">
