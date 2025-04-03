@@ -79,11 +79,8 @@ export async function getAccessToken(code: string) {
 
 export const checkTokenValidity = async () => {
   const currentTimeToMilliseconds = new Date().getTime();
-  console.log(currentTimeToMilliseconds);
   const tokenExpiry = storage.getItem("expiresIn");
-  console.log(currentTimeToMilliseconds > parseInt(tokenExpiry!));
   if (currentTimeToMilliseconds > parseInt(tokenExpiry!)) {
-    console.log(currentTimeToMilliseconds > parseInt(tokenExpiry!));
     await getRefreshToken();
   }
 };

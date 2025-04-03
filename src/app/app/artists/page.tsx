@@ -5,6 +5,7 @@ import { LoadingState } from "../components/loading";
 import Image from "next/image";
 import { useState } from "react";
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
+import Link from "next/link";
 
 export default function ArtistsPage() {
   const [timeRange, setTimeRange] = useState<
@@ -39,7 +40,11 @@ export default function ArtistsPage() {
       <div className="grid grid-cols-2 w-full items-center md:grid-cols-4 gap-4 gap-y-10">
         {artistData?.items &&
           artistData.items.map((artist) => (
-            <div key={artist.id} className="flex flex-col items-center gap-6 ">
+            <Link
+              href={`artists/${artist.id}`}
+              key={artist.id}
+              className="flex flex-col items-center gap-6 "
+            >
               <div className="size-28 min-h-28 md:w-52 md:min-h-52 rounded-full overflow-hidden">
                 <Image
                   src={artist.images[0].url}
@@ -54,7 +59,7 @@ export default function ArtistsPage() {
               <p className="text-sm md:text-lg text-neutral-400 font-semibold">
                 {artist.name}
               </p>
-            </div>
+            </Link>
           ))}
       </div>
     </div>

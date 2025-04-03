@@ -13,7 +13,7 @@ export const TrackTab = ({
   return (
     <Link
       key={id}
-      href={`tracks/${id}`}
+      href={`/app/tracks/${id}`}
       className="flex items-center gap-4 w-full border-b border-neutral-600 py-4 hover:bg-neutral-800 duration-300 ease-in transition-colors px-4"
     >
       <div className="relative size-16 min-h-16 md:w-24 md:min-h-24 shrink-0 overflow-hidden">
@@ -32,7 +32,7 @@ export const TrackTab = ({
           <p className=" md:text-lg font-bold line-clamp-1 hover:underline md:w-max underline-offset-2">
             {name}
           </p>
-          <p className="text-sm md:text-base text-neutral-400 line-clamp-1 font-semibold ">
+          <p className="text-xs md:text-base text-neutral-400 line-clamp-1 font-semibold ">
             {artists.map((artist) => artist.name).join(", ")} ~ {album.name}
           </p>
         </div>

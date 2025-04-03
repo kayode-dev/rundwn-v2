@@ -13,9 +13,10 @@ export default function TracksPage() {
   >("short_term");
   const { data: trackData, isLoading: trackLoading } = useQuery({
     queryKey: ["GET_USER_TRACKS", timeRange],
-    queryFn: () => getTopSongs({ timeRange: timeRange, limit: 30 }),
+    queryFn: () =>
+      getTopSongs({ timeRange: timeRange ?? "short_term", limit: 30 }),
   });
-
+  if (trackLoading) return <LoadingState />;
   return (
     <div className="p-4 pt-8  w-full space-y-10 md:space-y-20  max-w-7xl mx-auto">
       <div className="flex flex-col gap-8 md:flex-row items-center justify-between">
@@ -33,8 +34,7 @@ export default function TracksPage() {
           <ToggleGroupItem value="long_term">all time</ToggleGroupItem>
         </ToggleGroup>
       </div>
-      {trackLoading && <LoadingState />}
-      <div className="grid w-full items-center gap-4 gap-y-2    ">
+      <div className="w-full space-y-2">
         {trackData?.items &&
           trackData.items.map((track) => (
             <TrackTab {...track} key={track.id} />

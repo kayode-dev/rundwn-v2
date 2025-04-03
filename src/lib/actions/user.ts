@@ -138,7 +138,6 @@ export const getRecentTracks = async (limit: number) => {
   );
   if (result.ok) {
     const recentTracks = await result.json();
-    console.log(recentTracks);
     return recentTracks as { items: RecentTracksData[] };
   }
 };

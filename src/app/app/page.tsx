@@ -14,11 +14,11 @@ export default function MainAppPage() {
   });
   const { data: artistData, isLoading: artistsLoading } = useQuery({
     queryKey: ["GET_TOP_ARTISTS"],
-    queryFn: () => getTopArtists({ timeRange: "medium_term", limit: 10 }),
+    queryFn: () => getTopArtists({ timeRange: "short_term", limit: 10 }),
   });
   const { data: trackData, isLoading: songsLoading } = useQuery({
     queryKey: ["GET_TOP_SONGS"],
-    queryFn: () => getTopSongs({ timeRange: "medium_term", limit: 10 }),
+    queryFn: () => getTopSongs({ timeRange: "short_term", limit: 10 }),
   });
   const isLoading = detailsLoading || artistsLoading || songsLoading;
   if (isLoading) return <LoadingState />;
