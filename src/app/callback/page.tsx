@@ -2,6 +2,7 @@
 
 import { useGetAccessToken } from "@/lib/hooks/useCheckAuth";
 import { useRouter, useSearchParams } from "next/navigation";
+import { Suspense } from "react";
 
 export default function CallbackPage() {
   const params = useSearchParams();
@@ -10,5 +11,9 @@ export default function CallbackPage() {
   const { isSuccess } = useGetAccessToken(code);
   if (isSuccess) router.replace("app");
 
-  return <p>Authenticating....</p>;
+  return (
+    <Suspense>
+      <p>Authenticating....</p>
+    </Suspense>
+  );
 }
