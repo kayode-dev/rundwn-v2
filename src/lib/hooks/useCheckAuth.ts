@@ -1,4 +1,4 @@
-import { useMutation, useQuery } from "@tanstack/react-query";
+import { useQuery } from "@tanstack/react-query";
 import {
   checkTokenValidity,
   getAccessToken,
@@ -7,15 +7,11 @@ import {
 import { storage } from "./storage";
 
 export const useCheckAuth = () => {
-  const { mutate } = useMutation({
-    mutationKey: ["CHECK_AUTH"],
-    mutationFn: redirectToAuthCodeFlow,
-  });
   checkTokenValidity();
   const accessToken = storage.getItem("accessToken");
   const refreshToken = storage.getItem("refreshToken");
   if (!accessToken || !refreshToken) {
-    mutate();
+    redirectToAuthCodeFlow();
   }
 };
 

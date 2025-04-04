@@ -14,6 +14,14 @@ export const getTrack = async (trackId: string) => {
   if (result.ok) {
     const trackData = await result.json();
     return trackData as TrackData;
+  } else {
+    if (result.status >= 500) {
+      throw new Error("Someting went wrong. Please try again later.");
+    } else {
+      const data = (await result.json()) as { error: string };
+      throw new Error(
+        data?.error ?? "Someting went wrong. Please try again later."
+      );
+    }
   }
-  return null;
 };

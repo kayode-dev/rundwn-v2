@@ -2,15 +2,16 @@
 
 import { useGetAccessToken } from "@/lib/hooks/useCheckAuth";
 import { useRouter, useSearchParams } from "next/navigation";
-import { Suspense } from "react";
+import { Suspense, useEffect } from "react";
 
 function CallbackContent() {
   const params = useSearchParams();
   const router = useRouter();
   const code = params.get("code") || "";
   const { isSuccess } = useGetAccessToken(code);
-
-  if (isSuccess) router.replace("app");
+  useEffect(() => {
+    if (isSuccess) router.replace("app");
+  }, [isSuccess, router]);
 
   return <p>Authenticating....</p>;
 }

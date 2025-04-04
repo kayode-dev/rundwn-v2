@@ -1,7 +1,7 @@
+"use client";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
-
 export default function Home() {
   return (
     <div className="h-dvh flex flex-col text-center items-center justify-center gap-4">

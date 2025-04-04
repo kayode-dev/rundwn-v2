@@ -36,6 +36,15 @@ export const getArtistData = async (id: string) => {
   if (result.ok) {
     const artistData = await result.json();
     return artistData as ArtistData;
+  } else {
+    if (result.status >= 500) {
+      throw new Error("Someting went wrong. Please try again later.");
+    } else {
+      const data = (await result.json()) as { error: string };
+      throw new Error(
+        data?.error ?? "Someting went wrong. Please try again later."
+      );
+    }
   }
 };
 
@@ -48,5 +57,14 @@ export const getArtistTopTracks = async (id: string) => {
   if (result.ok) {
     const topTracks = await result.json();
     return topTracks as { tracks: TrackData[] };
+  } else {
+    if (result.status >= 500) {
+      throw new Error("Someting went wrong. Please try again later.");
+    } else {
+      const data = (await result.json()) as { error: string };
+      throw new Error(
+        data?.error ?? "Someting went wrong. Please try again later."
+      );
+    }
   }
 };

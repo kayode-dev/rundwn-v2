@@ -58,6 +58,15 @@ export const getTopArtists = async ({ timeRange, limit }: TopAttributeType) => {
   if (result.ok) {
     const topArtists = await result.json();
     return topArtists as { items: ArtistData[] };
+  } else {
+    if (result.status >= 500) {
+      throw new Error("Someting went wrong. Please try again later.");
+    } else {
+      const data = (await result.json()) as { error: string };
+      throw new Error(
+        data?.error ?? "Someting went wrong. Please try again later."
+      );
+    }
   }
 };
 
@@ -116,6 +125,15 @@ export const getTopSongs = async ({ timeRange, limit }: TopAttributeType) => {
   if (result.ok) {
     const topArtists = await result.json();
     return topArtists as { items: TrackData[] };
+  } else {
+    if (result.status >= 500) {
+      throw new Error("Someting went wrong. Please try again later.");
+    } else {
+      const data = (await result.json()) as { error: string };
+      throw new Error(
+        data?.error ?? "Someting went wrong. Please try again later."
+      );
+    }
   }
 };
 
@@ -139,6 +157,15 @@ export const getRecentTracks = async (limit: number) => {
   if (result.ok) {
     const recentTracks = await result.json();
     return recentTracks as { items: RecentTracksData[] };
+  } else {
+    if (result.status >= 500) {
+      throw new Error("Someting went wrong. Please try again later.");
+    } else {
+      const data = (await result.json()) as { error: string };
+      throw new Error(
+        data?.error ?? "Someting went wrong. Please try again later."
+      );
+    }
   }
 };
 
@@ -181,5 +208,14 @@ export const getPlaylists = async (limit: number) => {
   if (result.ok) {
     const playlists = await result.json();
     return playlists as { items: PlaylistData[] };
+  } else {
+    if (result.status >= 500) {
+      throw new Error("Someting went wrong. Please try again later.");
+    } else {
+      const data = (await result.json()) as { error: string };
+      throw new Error(
+        data?.error ?? "Someting went wrong. Please try again later."
+      );
+    }
   }
 };
