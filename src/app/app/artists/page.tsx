@@ -14,7 +14,7 @@ export default function ArtistsPage() {
   console.log(timeRange);
   const { data: artistData, isLoading: artistsLoading } = useQuery({
     queryKey: ["GET_USER_ARTISTS", timeRange],
-    queryFn: () => getTopArtists({ timeRange: timeRange, limit: 30 }),
+    queryFn: () => getTopArtists({ timeRange: timeRange, limit: 50 }),
   });
 
   return (

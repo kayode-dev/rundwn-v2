@@ -17,6 +17,9 @@ export const getUserDetails = async () => {
     return final as {
       display_name: string;
       images: { url: string }[];
+      country: string;
+      product: "premium" | "free" | "open";
+      id: string;
     };
   }
 };

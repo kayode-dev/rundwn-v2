@@ -33,7 +33,7 @@ export default function ArtistData() {
     artistLoading || artistTopTracksLoading || recentDataLoading;
   if (isLoading) return <LoadingState />;
   return (
-    <div className="p-4 pt-8  w-full space-y-10 md:space-y-20  max-w-7xl mx-auto">
+    <div className="p-4 pt-8 w-full space-y-10  max-w-7xl mx-auto">
       {artistData && (
         <div className="flex flex-col gap-4 items-center justify-between">
           <div className="w-60 aspect-square overflow-hidden">
@@ -73,7 +73,9 @@ export default function ArtistData() {
           </div>
         </div>
       ) : (
-        <p>You haven&apos;t listened to this artist recently :(</p>
+        <div className="py-1 px-3 text-sm md:text-base text-neu-green mx-auto rounded-full flex w-max items-center justify-center bg-neu-green/10 border-2 border-neu-green/60">
+          <p>You haven&apos;t listened to this artist recently :(</p>
+        </div>
       )}
       {artistTopTracks && (
         <div className="space-y-6">

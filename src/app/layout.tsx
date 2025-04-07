@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Raleway } from "next/font/google";
 import "./globals.css";
 import { QueryProvider } from "@/components/query-provider";
+import { Toaster } from "@/components/ui/toast";
 
 const raleway = Raleway({
   weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
@@ -24,6 +25,7 @@ export default function RootLayout({
         className={`${raleway.className} antialiased bg-neutral-900 !text-neutral-200`}
       >
         <QueryProvider>{children}</QueryProvider>
+        <Toaster />
       </body>
     </html>
   );

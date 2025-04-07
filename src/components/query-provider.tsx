@@ -11,7 +11,6 @@ export const QueryProvider = ({ children }: { children: React.ReactNode }) => {
   const client = new QueryClient({
     queryCache: new QueryCache({
       onError: (error) => {
-        // do not show toast when checking if user is logged in
         toast.error(error.message);
       },
     }),

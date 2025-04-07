@@ -1,3 +1,4 @@
+"use client";
 import { storage } from "../hooks/storage";
 
 const clientId = process.env.NEXT_PUBLIC_SPOTIFY_CLIENT_ID || "";
@@ -18,7 +19,7 @@ export async function redirectToAuthCodeFlow() {
   );
   params.append(
     "scope",
-    "user-read-private user-read-email user-read-recently-played user-top-read user-follow-read user-follow-modify playlist-read-private playlist-read-collaborative playlist-modify-public"
+    "user-read-private user-read-email user-read-recently-played user-top-read user-follow-read user-follow-modify playlist-read-private playlist-read-collaborative playlist-modify-public playlist-modify-private"
   );
   params.append("code_challenge_method", "S256");
   params.append("code_challenge", challenge);
