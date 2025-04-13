@@ -5,14 +5,17 @@ import {
   redirectToAuthCodeFlow,
 } from "../actions/auth";
 import { storage } from "./storage";
+import { useEffect } from "react";
 
 export const useCheckAuth = () => {
-  checkTokenValidity();
-  const accessToken = storage.getItem("accessToken");
-  const refreshToken = storage.getItem("refreshToken");
-  if (!accessToken || !refreshToken) {
-    redirectToAuthCodeFlow();
-  }
+  useEffect(() => {
+    checkTokenValidity();
+    const accessToken = storage.getItem("accessToken");
+    const refreshToken = storage.getItem("refreshToken");
+    if (!accessToken || !refreshToken) {
+      redirectToAuthCodeFlow();
+    }
+  }, []);
 };
 
 export const useGetAccessToken = (code: string) => {

@@ -8,6 +8,9 @@ import { formatWithCommas } from "@/lib/actions/helpers";
 import { TrackTab } from "../../components/track-tab";
 import { getRecentTracks } from "@/lib/actions/user";
 import { useMemo } from "react";
+import Link from "next/link";
+import { cn } from "@/lib/utils";
+import { buttonVariants } from "@/components/ui/button";
 
 export default function ArtistData() {
   const { slug } = useParams<{ slug: string }>();
@@ -59,6 +62,12 @@ export default function ArtistData() {
               genres: {artistData.genres.map((g) => g).join(", ")}
             </p>
           )}
+          <Link
+            href={artistData.uri}
+            className={cn(buttonVariants({ variant: "outline" }))}
+          >
+            SHOW ON SPOTIFY
+          </Link>
         </div>
       )}
       {recentTracksByArtist && recentTracksByArtist.length > 0 ? (
